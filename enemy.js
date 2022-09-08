@@ -6,12 +6,12 @@ AFRAME.registerComponent("enemy-fireballs", {
     shootEnemyMonster: function () {
         var scene = document.querySelector("#scene");
 
-        //enemyMonster entity
+        //Entidad monstruo enemigo
         var enemyMonster = document.querySelectorAll(".enemy");   
             
         for (var i = 0; i < enemyMonster.length; i++) {
 
-       //create fireballs
+       //Crar bolas de fuego
         var fireball = document.createElement("a-entity");
 
         fireball.setAttribute("class","fireball")
@@ -42,7 +42,7 @@ AFRAME.registerComponent("enemy-fireballs", {
         player.getWorldPosition(position1);
         enemy_fireball.getWorldPosition(position2);
 
-        //set the velocity and it's direction
+        //establecer la velocidad y su dirección
         var direction = new THREE.Vector3();
 
         direction.subVectors(position1, position2).normalize();
@@ -51,11 +51,11 @@ AFRAME.registerComponent("enemy-fireballs", {
 
         /******************************************************************************************* */
 
-        //check player life
+        //revisar vidas del jugador
         var element = document.querySelector("#countLife");
         var playerLife = parseInt(element.getAttribute("text").value);
 
-        //collide event on enemy bullets
+        //eventos de colisión con balas enemigas
         fireball.addEventListener("collide", function (e) {
            
             if (e.detail.body.el.id === "weapon") {               
@@ -66,11 +66,11 @@ AFRAME.registerComponent("enemy-fireballs", {
                     });
                 }
                 if (playerLife <= 0) {
-                    //show text
+                    //mostrar texto
                     var txt = document.querySelector("#over");
                     txt.setAttribute("visible", true);
 
-                    //remove monsters
+                    //eliminar monstruos
                     var El = document.querySelectorAll(".enemy")
                     for (var i = 0; i < El.length; i++) {
                         scene.removeChild(El)
