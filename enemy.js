@@ -11,7 +11,7 @@ AFRAME.registerComponent("enemy-fireballs", {
             
         for (var i = 0; i < enemyMonster.length; i++) {
 
-       //Crar bolas de fuego
+       //Crear bolas de fuego
         var fireball = document.createElement("a-entity");
 
         fireball.setAttribute("class","fireball")
